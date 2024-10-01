@@ -5,7 +5,7 @@ FROM php:latest
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # 애플리케이션 의존성을 먼저 설치 (캐시 활용)
-COPY composer.json composer.lock /var/www/html/
+COPY composer.json /var/www/html/
 RUN cd /var/www/html && composer install --no-dev --optimize-autoloader
 
 # 애플리케이션 파일 복사
